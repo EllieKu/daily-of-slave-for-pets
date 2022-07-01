@@ -13,9 +13,9 @@ const pet = {
 
 function Home() {
   return (
-    <main>
+    <div>
       <Card pet={pet}/>
-    </main>
+    </div>
   )
 }
 

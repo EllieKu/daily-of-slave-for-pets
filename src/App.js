@@ -1,25 +1,19 @@
-// import logo from './logo.svg';
-import './App.css';
 import React from "react";
+import { Routes, Route } from 'react-router-dom';
+import './App.css';
 import PetList from './pages/PetList';
-
-// TODO add router
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           鏟屎官的日常
-//         </p>
-//       </header>
-//     </div>
-//   );
-// }
+import RecordList from "./pages/RecordList";
+import Reminder from './pages/Reminder'
 
 function App() {
   return (
-    <PetList/>
+    <div className="app">
+      <Routes>
+        <Route path="/" element={<PetList />}></Route>
+        <Route path="/record-list" element={<RecordList />}></Route>
+        <Route path="/reminder" element={<Reminder />}></Route>
+      </Routes>
+    </div>
   )
 }
 

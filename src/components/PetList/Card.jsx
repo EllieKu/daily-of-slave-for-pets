@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import icon_scroll from '../../images/icons8-scroll.svg';
 import icon_clock from '../../images/icons8-clock.svg'
 import image_jake from '../../images/icons8-jake-96.png'
@@ -9,12 +10,14 @@ function Control() {
     {
       name: '紀錄',
       icon: icon_scroll,
-      alt: 'icon_scroll'
+      alt: 'icon_scroll',
+      link: '/record-list'
     },
     {
       name: '提醒',
       icon: icon_clock,
-      alt: 'icon_clock'
+      alt: 'icon_clock',
+      link: '/reminder'
     }
   ]
 
@@ -24,7 +27,7 @@ function Control() {
         itemList.map(item => (
         <div className="control-item" key={item.alt}>
           <img src={item.icon} alt={item.alt} />
-          <span>{item.name}</span>
+          <Link to={item.link}>{item.name}</Link>
         </div>))
       }
     </div>
@@ -33,6 +36,9 @@ function Control() {
 
 function Card(props) {
   const { pet } = props
+  const gender = pet.gender === 'male' ? 
+    <span role="img" aria-label="male">♀️</span> : 
+    <span role="img" aria-label="female">♂️</span>
 
   return (
     <div className="card">
@@ -44,8 +50,9 @@ function Card(props) {
             <span>{pet.category}</span>
           </div>
           <div className="bottom">
-            <span role="img" aria-label="female">♂️</span>
-            <span role="img" aria-label="male">♀️</span>
+            {gender}
+            {/* <span role="img" aria-label="female">♂️</span>
+            <span role="img" aria-label="male">♀️</span> */}
             <span>{pet.age.year}歲{pet.age.month}個月</span>
           </div>
         </div>
