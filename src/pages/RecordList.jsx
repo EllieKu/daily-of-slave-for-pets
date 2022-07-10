@@ -30,6 +30,7 @@ class RecordList extends React.Component {
     this.handleFilter = this.handleFilter.bind(this)
     this.handleAdd = this.handleAdd.bind(this)
     this.displayBoxEdit = this.displayBoxEdit.bind(this)
+    this.itemDelete = this.itemDelete.bind(this)
   }
 
   handleFilter() {
@@ -44,6 +45,10 @@ class RecordList extends React.Component {
     this.setState({
       boxEditVisible: boolean
     })
+  }
+
+  itemDelete() {
+    console.log('itemDelete')
   }
 
   render() {
@@ -61,7 +66,9 @@ class RecordList extends React.Component {
         </Nav>
         {
           this.state.boxEditVisible ?
-            <BoxEdit displayBoxEdit={this.displayBoxEdit}/> :
+            <BoxEdit
+              displayBoxEdit={this.displayBoxEdit}
+              itemDelete={this.itemDelete}/> :
             null
         }
         {

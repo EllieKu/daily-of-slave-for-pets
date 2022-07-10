@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "../components/PetList/Card";
+import Profile from "../components/Home/Profile";
 
 const pet = {
   name: 'bubu',
@@ -14,7 +14,7 @@ const pet = {
 function Home() {
   return (
     <div>
-      <Card pet={pet}/>
+      <Profile pet={pet}/>
     </div>
   )
 }

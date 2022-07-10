@@ -2,7 +2,8 @@ import React from "react";
 import styled from 'styled-components';
 import icon_close from '../../images/circle-xmark-solid.svg';
 import icon_bath from '../../images/bath-solid.svg';
-import icon_amend from '../../images/pen-to-square-solid.svg';
+import icon_plus from '../../images/plus-solid.svg'
+import Icon from '../common/IconList'
 
 const Cover = styled.div`
   position: absolute;
@@ -36,6 +37,8 @@ const Title = styled.span`
 `
 
 const IconEvent = styled.img`
+  witth: 50px;
+  height: 50px;
   margin-bottom: 6px;
 `
 
@@ -47,24 +50,43 @@ const EventWrapper = styled.div`
 
 const Span = styled.span`
   display: inline-block;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 `
 
 const Note = styled.textarea`
   width: 100%;
   padding: 10px;
+  margin-bottom: 10px;
   box-sizing: border-box;
-  background-color: #f2ebe9;
+  background-color: #f9f9f9;
   border-radius: 10px;
   border-style: hidden;
 `
+
+const ImgWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+`
+
+const Img = styled.div`
+  width: 80px;
+  height: 80px;
+  border: 2px dotted #000;
+  border-radius: 10px;
+  background-image: url(${icon_plus});
+  background-position: center;
+  background-repeat: no-repeat;
+`
+
 const ButtonWrapper = styled.div`
   text-align: center;
 `
 
 const Button = styled.button`
-  padding: 6px 24px;
+  padding: 8px 24px;
   background-color: #f94c66;
+  margin: 0 10px;
   color: #fff;
   border-radius: 116px;
   border: unset;
@@ -74,10 +96,22 @@ class BoxEdit extends React.Component {
   constructor(props) {
     super(props)
     this.handleClose = this.handleClose.bind(this)
+    this.handleSave = this.handleSave.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   handleClose() {
     this.props.displayBoxEdit(false)
+  }
+  
+  handleSave() {
+    console.log('save')
+    this.handleClose() 
+  }
+
+  handleDelete() {
+    this.props.itemDelete()
+    this.handleClose()
   }
 
   render() {
@@ -91,20 +125,29 @@ class BoxEdit extends React.Component {
             aria-label="close"
             onPointerDown={this.handleClose} />
           <EventWrapper>
-            <IconEvent 
+            {/* <IconEvent 
               src={icon_bath}
               alt="icon_bath"
-              aria-label="icon_bath" />
+              aria-label="icon_bath" /> */}
+            <Icon name="remind" />
             <Span>洗澡</Span>
           </EventWrapper>
           <Span>日期: 2022-07-01</Span>
           <br/>
           <Note
-            rows="5">
+            rows="5"
+            placeholder="備註">
           </Note>
+          <ImgWrapper>
+            <Img></Img>
+            <Img></Img>
+            <Img></Img>
+          </ImgWrapper>
           <ButtonWrapper>
-            <Button>刪除</Button>
-            <Button>保存</Button>
+            <Button
+              onPointerDown={this.handleDelete}>刪除</Button>
+            <Button
+              onPointerDown={this.handleSave}>保存</Button>
           </ButtonWrapper>
         </Message>
       </Cover>
