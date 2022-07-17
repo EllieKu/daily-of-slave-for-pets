@@ -1,6 +1,7 @@
 import React from "react";
-import styled from 'styled-components'
-import eventIconList from './EventAndIcon'
+import styled from 'styled-components';
+// import eventIconList from './EventAndIcon';
+import Icon from '../common/IconList';
 
 const StyledCard = styled.div`
   display: flex;
@@ -18,23 +19,28 @@ const FirstLine = styled.div`
   margin-block: 5px;
   font-size: 16px;
 `
-
-const EventIcon = styled.span`
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-left: 1px;
-  margin-right: 2px;
-  background-color: #fff;
-  border: 1px solid #f1eee9;
-  border-radius: 12px;
+const EventWrapper = styled.div`
+  display: flex;
+  align-items: center;
 `
 
-const EventWrapper = styled.span`
-  padding-right: 12px;
-  background-color: #f1eee9;
-  border-radius: 12px;
+const IconWrapper = styled.div`
+  width: 20px;
+  height: 20px;
+  padding: 4px;
+  background-color: #fff;
+  border: 1px solid #f1eee9;
+  border-radius: 14px;
   line-height: 24px;
   font-weight: bold;
+  z-index: 1;
+`
+const EventName = styled.span`
+  background-color: #f1eee9;
+  padding: 3px 6px 3px 24px;
+  margin-left: -24px;
+  line-height: 24px;
+  border-radius: 14px;
 `
 
 const Edit = styled.button`
@@ -50,37 +56,15 @@ const Span = styled.span`
   margin-block: 5px;
 `
 
-// const eventIconList = [
-//   {
-//     name: '洗澡',
-//     icon: '🛁',
-//   },
-//   {
-//     name: '內驅',
-//     icon: '💊',
-//   },
-//   {
-//     name: '外驅',
-//     icon: '🧴',
-//   },
-//   {
-//     name: '剪毛',
-//     icon: '✂️',
-//   }
-// ]
-
 function Event(props) {
-  const { name } = props
-  const eventInside = eventIconList.find(element => element.name === name)
+  const { iconName, name } = props
 
   return (
     <EventWrapper>
-      <EventIcon
-        role="img"
-        aria-label="eventIcon">
-          {eventInside.icon}
-      </EventIcon>
-      <span>{eventInside.name}</span>
+      <IconWrapper>
+        <Icon name={iconName} />
+      </IconWrapper>
+      <EventName>{name}</EventName>
     </EventWrapper>
   )
 }
@@ -95,7 +79,7 @@ function Card(props) {
   return (
     <StyledCard>
       <FirstLine>
-        <Event name={event.name}/>
+        <Event name={event.name} iconName={event.iconName} />
         <Edit
           onPointerDown={handleEdit}
           aria-label="edit">

@@ -1,7 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import icon_close from '../../images/circle-xmark-solid.svg';
-import icon_bath from '../../images/bath-solid.svg';
+import { ReactComponent as IconClose } from '../../images/circle-xmark-solid.svg';
 import icon_plus from '../../images/plus-solid.svg'
 import Icon from '../common/IconList'
 
@@ -23,7 +22,7 @@ const Message = styled.div`
   border-radius: 20px;
 `
 
-const IconClose = styled.img`
+const IconCloseWrapper = styled.div`
   position: absolute;
   width: 40px;
   top: -10px;
@@ -80,6 +79,8 @@ const Img = styled.div`
 `
 
 const ButtonWrapper = styled.div`
+  position: absolute;
+  bottom: 0;
   text-align: center;
 `
 
@@ -119,17 +120,15 @@ class BoxEdit extends React.Component {
       <Cover>
         <Message>
           <Title>修改記事</Title>
-          <IconClose
-            src={icon_close}
-            alt="icon_close"
-            aria-label="close"
-            onPointerDown={this.handleClose} />
+          <IconCloseWrapper>
+            <IconClose onPointerDown={this.handleClose} />
+          </IconCloseWrapper>
           <EventWrapper>
             {/* <IconEvent 
               src={icon_bath}
               alt="icon_bath"
               aria-label="icon_bath" /> */}
-            <Icon name="remind" />
+            <Icon name="bath" />
             <Span>洗澡</Span>
           </EventWrapper>
           <Span>日期: 2022-07-01</Span>

@@ -1,20 +1,22 @@
 import React from "react";
 // import styled from 'styled-components';
 import Nav from "../components/Nav";
-import icon_plus from '../images/plus-solid.svg';
-import icon_filter from '../images/filter-solid.svg';
+import { ReactComponent as IconPlus } from '../images/plus-solid.svg';
+import { ReactComponent as IconFilter } from '../images/filter-solid.svg';
 import Card from "../components/RecordList/Card";
 import BoxEdit from "../components/RecordList/BoxEdit";
 
 const list = [
   {
     id: 1,
+    iconName: 'pills',
     name: '內驅',
     time: '2022-06-28',
     note: '我是備註'
   },
   {
     id: 2,
+    iconName: 'bath',
     name: '洗澡',
     time: '2022-06-30',
     note: ''
@@ -25,7 +27,8 @@ class RecordList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      boxEditVisible: true
+      // boxEditVisible: true
+      boxEditVisible: false
     }
     this.handleFilter = this.handleFilter.bind(this)
     this.handleAdd = this.handleAdd.bind(this)
@@ -55,14 +58,8 @@ class RecordList extends React.Component {
     return (
       <div>
         <Nav>
-          <img
-            src={icon_filter}
-            alt="icon_filter"
-            onPointerDown={this.handleFilter} />
-          <img
-            src={icon_plus}
-            alt="icon_plus"
-            onPointerDown={this.handleAdd}/>
+          <IconFilter onPointerDown={this.handleFilter} />  
+          <IconPlus onPointerDown={this.handleAdd} />  
         </Nav>
         {
           this.state.boxEditVisible ?

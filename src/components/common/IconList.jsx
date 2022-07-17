@@ -1,23 +1,8 @@
 import React from "react";
 import styled from 'styled-components';
-import icon_scroll from '../../images/icons8-scroll.svg';
-import icon_clock from '../../images/icons8-clock.svg';
-import icon_bath from '../../images/bath-solid.svg';
-
-const list = [
-  {
-    name: "scroll",
-    item: icon_scroll
-  },
-  {
-    name: 'remind',
-    icon: icon_clock,
-  },
-  {
-    name: 'bath',
-    icon: icon_bath,
-  }
-]
+import { ReactComponent as Iconath } from '../../images/bath-solid.svg';
+import { ReactComponent as IconHospital } from '../../images/hospital-regular.svg';
+import { ReactComponent as IconPills } from '../../images/pills-solid.svg';
 
 const IconEvent = styled.img`
   width: 50px;
@@ -27,11 +12,23 @@ const IconEvent = styled.img`
 
 function Icon(props) {
   const { name } = props;
-  const icon = list.find(item => item.name === name);
 
-  return (
-    <IconEvent src={icon.icon} alt={icon.icon} />
-  )
+  let icon = null;
+  switch (name) {
+    case 'pills':
+      icon = <IconPills />
+      break;
+    case 'bath':
+      icon = <Iconath />
+      break;
+    case 'hospital':
+      icon = <IconHospital />
+      break;
+    default:
+      console.log('icon missing')
+  }
+
+  return icon
 }
 
 export default Icon

@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import icon_scroll from '../../images/icons8-scroll.svg';
-import icon_clock from '../../images/icons8-clock.svg'
+import { ReactComponent as IconRecord } from '../../images/icons8-scroll.svg';
+import { ReactComponent as IconReminder } from '../../images/icons8-clock.svg';
 import image_jake from '../../images/icons8-jake-96.png'
 
 const Item = styled.div`
@@ -26,31 +26,17 @@ const ControlWrapepr = styled.div`
 `
 
 function Control() {
-  const itemList = [
-    {
-      name: '紀錄',
-      icon: icon_scroll,
-      alt: 'icon_scroll',
-      link: '/record-list'
-    },
-    
-    {
-      name: '提醒',
-      icon: icon_clock,
-      alt: 'icon_clock',
-      link: '/reminder'
-    }
-  ]
 
   return (
     <ControlWrapepr>
-      {
-        itemList.map(item => (
-        <Item key={item.alt}>
-          <img src={item.icon} alt={item.alt} />
-          <Link to={item.link}>{item.name}</Link>
-        </Item>))
-      }
+      <Item key="recordList">
+        <IconRecord />
+        <Link to='/record-list'>紀錄</Link>
+      </Item>
+      <Item key="reminder">
+        <IconReminder />
+        <Link to='/reminder'>提醒</Link>
+      </Item>
     </ControlWrapepr>
   )
 }
