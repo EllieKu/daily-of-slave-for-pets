@@ -1,7 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
 import { ReactComponent as IconClose } from '../../images/circle-xmark-solid.svg';
-import icon_plus from '../../images/plus-solid.svg'
 import Icon from '../common/IconList'
 
 const Cover = styled.div`
@@ -33,12 +32,6 @@ const Title = styled.span`
   display: inline-block;
   font-size: 20px;
   text-align: center;
-`
-
-const IconEvent = styled.img`
-  witth: 50px;
-  height: 50px;
-  margin-bottom: 6px;
 `
 
 const EventWrapper = styled.div`
@@ -124,10 +117,6 @@ class BoxEdit extends React.Component {
             <IconClose onPointerDown={this.handleClose} />
           </IconCloseWrapper>
           <EventWrapper>
-            {/* <IconEvent 
-              src={icon_bath}
-              alt="icon_bath"
-              aria-label="icon_bath" /> */}
             <Icon name="bath" />
             <Span>洗澡</Span>
           </EventWrapper>

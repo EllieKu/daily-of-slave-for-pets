@@ -1,14 +1,7 @@
 import React from "react";
-import styled from 'styled-components';
-import { ReactComponent as Iconath } from '../../images/bath-solid.svg';
+import { ReactComponent as IconBath } from '../../images/bath-solid.svg';
 import { ReactComponent as IconHospital } from '../../images/hospital-regular.svg';
 import { ReactComponent as IconPills } from '../../images/pills-solid.svg';
-
-const IconEvent = styled.img`
-  width: 50px;
-  height: 50px;
-  margin-bottom: 6px;
-`
 
 function Icon(props) {
   const { name } = props;
@@ -19,7 +12,7 @@ function Icon(props) {
       icon = <IconPills />
       break;
     case 'bath':
-      icon = <Iconath />
+      icon = <IconBath />
       break;
     case 'hospital':
       icon = <IconHospital />

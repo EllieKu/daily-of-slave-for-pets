@@ -1,6 +1,5 @@
 import React from "react";
 import styled from 'styled-components';
-// import eventIconList from './EventAndIcon';
 import Icon from '../common/IconList';
 
 const StyledCard = styled.div`
@@ -19,6 +18,7 @@ const FirstLine = styled.div`
   margin-block: 5px;
   font-size: 16px;
 `
+
 const EventWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -35,6 +35,7 @@ const IconWrapper = styled.div`
   font-weight: bold;
   z-index: 1;
 `
+
 const EventName = styled.span`
   background-color: #f1eee9;
   padding: 3px 6px 3px 24px;
