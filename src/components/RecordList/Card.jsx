@@ -5,7 +5,7 @@ import Icon from '../common/IconList';
 const StyledCard = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 10px 10px;
+  padding: 10px;
   margin-block: 10px;
   background-color: #fff;
   font-size: 12px;
@@ -55,6 +55,7 @@ const Edit = styled.button`
 
 const Span = styled.span`
   margin-block: 5px;
+  color: rgba(102,102,102);
 `
 
 function Event(props) {

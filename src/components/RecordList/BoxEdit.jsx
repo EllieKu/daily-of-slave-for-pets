@@ -5,17 +5,20 @@ import Icon from '../common/IconList'
 
 const Cover = styled.div`
   position: absolute;
-  width: 100vw;
-  height: calc(100vh - 73px); 
-  background-color: rgb(0, 0, 0, .5)
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; 
+  background-color: rgb(0, 0, 0, .5);
+  z-index: 2;
 `
 
 const Message = styled.div`
   position: relative;
   box-sizing: border-box;
   width: 80%;
-  height: 80%;
-  margin: 10% auto;
+  height: 70%;
+  margin: 74px auto;
   padding: 20px;
   background-color: #fff;
   border-radius: 20px;
@@ -30,7 +33,8 @@ const IconCloseWrapper = styled.div`
 
 const Title = styled.span`
   display: inline-block;
-  font-size: 20px;
+  font-size: 16px;
+  font-weight: bolder;
   text-align: center;
 `
 
@@ -38,6 +42,7 @@ const EventWrapper = styled.div`
   margin: 10px auto;
   width: 50px;
   text-align: center;
+  font-size: 20px;
 `
 
 const Span = styled.span`
@@ -55,25 +60,10 @@ const Note = styled.textarea`
   border-style: hidden;
 `
 
-const ImgWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-`
-
-const Img = styled.div`
-  width: 80px;
-  height: 80px;
-  border: 2px dotted #000;
-  border-radius: 10px;
-  background-image: url(${icon_plus});
-  background-position: center;
-  background-repeat: no-repeat;
-`
-
 const ButtonWrapper = styled.div`
   position: absolute;
-  bottom: 0;
+  bottom: 20px;
+  width: calc(100% - 40px);
   text-align: center;
 `
 
@@ -126,11 +116,6 @@ class BoxEdit extends React.Component {
             rows="5"
             placeholder="備註">
           </Note>
-          <ImgWrapper>
-            <Img></Img>
-            <Img></Img>
-            <Img></Img>
-          </ImgWrapper>
           <ButtonWrapper>
             <Button
               onPointerDown={this.handleDelete}>刪除</Button>
