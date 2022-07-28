@@ -20,14 +20,14 @@ const ProfileWrapper = styled.div`
   border-radius: 10px;
 `
 
-const ControlWrapepr = styled.div`
+const ControlWrapper = styled.div`
   display: flex;
 `
 
 function Control() {
 
   return (
-    <ControlWrapepr>
+    <ControlWrapper>
       <Item key="recordList">
         <Icon name="scroll" />
         <Link to='/record-list'>紀錄</Link>
@@ -36,7 +36,7 @@ function Control() {
         <Icon name="clock" />
         <Link to='/reminder'>提醒</Link>
       </Item>
-    </ControlWrapepr>
+    </ControlWrapper>
   )
 }
 
@@ -48,7 +48,7 @@ function Profile(props) {
 
   return (
     <ProfileWrapper>
-      <ControlWrapepr>
+      <ControlWrapper>
         <img className="avatar" src={image_jake} alt="avatar"/>
         <div className="brief">
           <div className="top">
@@ -62,7 +62,7 @@ function Profile(props) {
             <span>{pet.age.year}歲{pet.age.month}個月</span>
           </div>
         </div>
-      </ControlWrapepr>
+      </ControlWrapper>
       <Control />
     </ProfileWrapper>
   )
