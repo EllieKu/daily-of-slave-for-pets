@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { ReactComponent as IconRecord } from '../../images/icons8-scroll.svg';
-import { ReactComponent as IconReminder } from '../../images/icons8-clock.svg';
 import image_jake from '../../images/icons8-jake-96.png'
+import Icon from '../common/IconList'
 
 const Item = styled.div`
   display: flex;
@@ -30,11 +29,11 @@ function Control() {
   return (
     <ControlWrapepr>
       <Item key="recordList">
-        <IconRecord />
+        <Icon name="scroll" />
         <Link to='/record-list'>紀錄</Link>
       </Item>
       <Item key="reminder">
-        <IconReminder />
+        <Icon name="clock" />
         <Link to='/reminder'>提醒</Link>
       </Item>
     </ControlWrapepr>

@@ -1,10 +1,9 @@
 import React from "react";
 // import styled from 'styled-components';
 import Nav from "../components/Nav";
-import { ReactComponent as IconPlus } from '../images/plus-solid.svg';
-import { ReactComponent as IconFilter } from '../images/filter-solid.svg';
 import Card from "../components/RecordList/Card";
 import BoxEdit from "../components/RecordList/BoxEdit";
+import Icon from '../components/common/IconList';
 
 const list = [
   {
@@ -58,8 +57,12 @@ class RecordList extends React.Component {
     return (
       <div>
         <Nav>
-          <IconFilter onPointerDown={this.handleFilter} />  
-          <IconPlus onPointerDown={this.handleAdd} />  
+          <div onPointerDown={this.handleFilter}>
+            <Icon name="filter" />  
+          </div>
+          <div onPointerDown={this.handleAdd}>
+            <Icon name="plus" />  
+          </div>
         </Nav>
         {
           this.state.boxEditVisible ?

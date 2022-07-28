@@ -1,6 +1,5 @@
 import React from "react";
 import styled from 'styled-components';
-import { ReactComponent as IconClose } from '../../images/circle-xmark-solid.svg';
 import Icon from '../common/IconList'
 
 const Cover = styled.div`
@@ -103,8 +102,8 @@ class BoxEdit extends React.Component {
       <Cover>
         <Message>
           <Title>修改記事</Title>
-          <IconCloseWrapper>
-            <IconClose onPointerDown={this.handleClose} />
+          <IconCloseWrapper onPointerDown={this.handleClose}>
+            <Icon name="circleXmark" />
           </IconCloseWrapper>
           <EventWrapper>
             <Icon name="bath" />
