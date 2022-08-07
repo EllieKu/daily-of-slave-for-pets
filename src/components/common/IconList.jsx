@@ -24,8 +24,8 @@ function Icon(props) {
       icon = <IconHospital />
       break;
     case 'arrowLeft':
-        icon = <IconArrowLeft />
-        break;
+      icon = <IconArrowLeft />
+      break;
     case 'circleXmark':
       icon = <IconCircleXmark />
       break;
@@ -42,7 +42,7 @@ function Icon(props) {
       icon = <IconClock />
       break;
     default:
-      console.log('icon missing')
+      icon = <img alt="iconMissing"/>
   }
 
   return icon
