@@ -2,7 +2,6 @@ import React from "react";
 // import styled from 'styled-components';
 import Nav from "../components/Nav";
 import Card from "../components/RecordList/Card";
-import BoxEdit from "../components/RecordList/BoxEdit";
 import Icon from '../components/common/IconList';
 
 const list = [
@@ -26,13 +25,19 @@ class RecordList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      // boxEditVisible: true
-      boxEditVisible: false
+      list: [],
     }
     this.handleFilter = this.handleFilter.bind(this)
     this.handleAdd = this.handleAdd.bind(this)
-    this.displayBoxEdit = this.displayBoxEdit.bind(this)
-    this.itemDelete = this.itemDelete.bind(this)
+    this.putListAmend = this.putListAmend.bind(this)
+    this.postListGet = this.postListGet.bind(this)
+    this.deleteListDelete = this.deleteListDelete.bind(this)
+    this.cardSave = this.cardSave.bind(this)
+    this.cardDelete = this.cardDelete.bind(this)
+  }
+  
+  componentDidMount() {
+    this.postListGet()
   }
 
   handleFilter() {
@@ -43,14 +48,39 @@ class RecordList extends React.Component {
     console.log('add')
   }
 
-  displayBoxEdit(boolean) {
+  postListGet() {  // post api to get record list
+    // TODO async
+    const newList = list
     this.setState({
-      boxEditVisible: boolean
+      list: newList,
     })
   }
 
-  itemDelete() {
-    console.log('itemDelete')
+  putListAmend() { // put api to amend record item
+    console.log('putListAmend')
+  }
+
+  deleteListDelete() {
+    console.log('deleteListDelete')
+  }
+
+  cardSave(item) {
+    const newList = this.state.list.map((event) => {
+      if (event.id === item.id) return item
+      return event
+    })
+    this.setState({
+      list: newList
+    })
+  }
+
+  cardDelete(item) {
+    const newList = this.state.list.filter((event) => {
+      return event.id !== item.id
+    })
+    this.setState({
+      list: newList
+    })
   }
 
   render() {
@@ -65,15 +95,13 @@ class RecordList extends React.Component {
           </div>
         </Nav>
         {
-          this.state.boxEditVisible ?
-            <BoxEdit
-              displayBoxEdit={this.displayBoxEdit}
-              itemDelete={this.itemDelete}/> :
-            null
-        }
-        {
-          list.map(item =>
-            <Card key={item.id} event={item} displayBoxEdit={this.displayBoxEdit}/>)
+          this.state.list.map(item =>
+            <Card
+              key={item.id}
+              event={item}
+              eventSave={this.cardSave}
+              eventDelete={this.cardDelete} />
+          )
         }
       </div>
     )

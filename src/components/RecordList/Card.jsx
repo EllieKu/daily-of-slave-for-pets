@@ -1,6 +1,8 @@
 import React from "react";
+import { useState } from "react";
 import styled from 'styled-components';
 import Icon from '../common/IconList';
+import BoxEdit from "./BoxEdit";
 
 const StyledCard = styled.div`
   display: flex;
@@ -72,10 +74,16 @@ function Event(props) {
 }
 
 function Card(props) {
-
+  
   const { event } = props
-  function handleEdit() {
-    props.displayBoxEdit(true)
+  const [boxVisible, setBoxVisible] = useState(false)
+
+  function BoxDelete(event) {
+    props.eventDelete(event)
+  }
+
+  function BoxSave(event) {
+    props.eventSave(event)
   }
 
   return (
@@ -83,7 +91,7 @@ function Card(props) {
       <FirstLine>
         <Event name={event.name} iconName={event.iconName} />
         <Edit
-          onPointerDown={handleEdit}
+          onPointerDown={() => setBoxVisible(true)}
           aria-label="edit">
             編輯
         </Edit>
@@ -91,6 +99,15 @@ function Card(props) {
       <Span>{event.time}</Span>
       { event.note.length > 0 &&
         <Span>{event.note}</Span>
+      }
+      {
+        boxVisible ?
+          <BoxEdit
+            event={props.event}
+            close={() => setBoxVisible(false)}
+            save={BoxSave}
+            delete={BoxDelete} /> :
+          null
       }
     </StyledCard>
   )

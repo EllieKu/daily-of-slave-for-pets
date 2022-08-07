@@ -44,9 +44,18 @@ const EventWrapper = styled.div`
   font-size: 20px;
 `
 
-const Span = styled.span`
-  display: inline-block;
+const EventText = styled.span`
+  margin-top: 6px;
+`
+
+const DateWrapper = styled.div`
+  display: flex;
   margin-bottom: 10px;
+`
+
+const Span = styled.span`
+  font-size: 14px;
+  margin-right  6px;
 `
 
 const Note = styled.textarea`
@@ -78,26 +87,50 @@ const Button = styled.button`
 class BoxEdit extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      name: '',
+      iconName: '',
+      time: '',
+    }
     this.handleClose = this.handleClose.bind(this)
     this.handleSave = this.handleSave.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
+    this.handleDateChange = this.handleDateChange.bind(this)
+  }
+
+  componentDidMount() {
+    this.setState((state, props) => ({
+      ...props.event
+    }))
   }
 
   handleClose() {
-    this.props.displayBoxEdit(false)
+    this.props.close()
   }
   
   handleSave() {
-    console.log('save')
+    this.props.save(this.state)
     this.handleClose() 
   }
 
   handleDelete() {
-    this.props.itemDelete()
+    this.props.delete(this.state)
     this.handleClose()
   }
 
+  handleDateChange(event) {
+    this.setState({
+      time: event.target.value
+    })
+  }
+
   render() {
+    const {
+      name,
+      iconName,
+      time
+    } = this.state
+
     return (
       <Cover>
         <Message>
@@ -106,11 +139,16 @@ class BoxEdit extends React.Component {
             <Icon name="circleXmark" />
           </IconCloseWrapper>
           <EventWrapper>
-            <Icon name="bath" />
-            <Span>洗澡</Span>
+            <Icon name={iconName} />
+            <EventText>{name}</EventText>
           </EventWrapper>
-          <Span>日期: 2022-07-01</Span>
-          <br/>
+          <DateWrapper>
+            <Span>日期: </Span>
+            <input
+              type="date"
+              value={time}
+              onInput={this.handleDateChange}></input>
+          </DateWrapper>
           <Note
             rows="5"
             placeholder="備註">
