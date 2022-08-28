@@ -42,9 +42,6 @@ function Control() {
 
 function Profile(props) {
   const { pet } = props
-  const gender = pet.gender === 'male' ? 
-    <span role="img" aria-label="male">♀️</span> : 
-    <span role="img" aria-label="female">♂️</span>
 
   return (
     <ProfileWrapper>
@@ -56,10 +53,12 @@ function Profile(props) {
             <span>{pet.category}</span>
           </div>
           <div className="bottom">
-            {gender}
-            {/* <span role="img" aria-label="female">♂️</span>
-            <span role="img" aria-label="male">♀️</span> */}
-            <span>{pet.age.year}歲{pet.age.month}個月</span>
+            {
+              pet.gender === 'male' ? 
+              <span role="img" aria-label="male">♀️</span> : 
+              <span role="img" aria-label="female">♂️</span>
+            }
+            <span>{pet.age}</span>
           </div>
         </div>
       </ControlWrapper>
