@@ -24,13 +24,14 @@ const ControlWrapper = styled.div`
   display: flex;
 `
 
-function Control() {
+function Control(props) {
+  const { name } = props
 
   return (
     <ControlWrapper>
       <Item key="recordList">
         <Icon name="scroll" />
-        <Link to='/record-list'>紀錄</Link>
+        <Link to={name}>紀錄</Link>
       </Item>
       <Item key="reminder">
         <Icon name="clock" />
@@ -62,7 +63,7 @@ function Profile(props) {
           </div>
         </div>
       </ControlWrapper>
-      <Control />
+      <Control name={pet.name}/>
     </ProfileWrapper>
   )
 }
