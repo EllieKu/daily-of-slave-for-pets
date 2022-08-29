@@ -1,20 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "../axios";
 import Profile from "../components/Home/Profile";
 
-const pet = {
-  name: 'bubu',
-  category: '小型雪納瑞犬',
-  gender: 'female',
-  age: {
-    year: 12,
-    month: 7,
-  }
-}
-
 function Home() {
+  const [list, setList] = useState([])
+  const params = useParams()
+
+  useEffect(() => {
+    getUser(params.user)
+  }, [])
+  
+
+  function getUser(user) {
+    axios({
+      url: user,
+      method: 'get'
+    }).then(response => {
+      setList(response.data)
+    }).catch(error => {
+      console.log(error)
+    })
+  }
+
   return (
     <div>
-      <Profile pet={pet}/>
+      {
+        list.length > 0
+        ? list.map((pet) => <Profile key={pet.name} pet={pet}/>)
+        : <h1>沒有資料</h1>
+      }
     </div>
   )
 }

@@ -5,4 +5,6 @@ axios.defaults.proxy = {
   host: 'daily-of-slave-for-pets-server.herokuapp.com'
 }
 
+axios.defaults.baseURL = 'https://daily-of-slave-for-pets-server.herokuapp.com/'
+
 export default axios

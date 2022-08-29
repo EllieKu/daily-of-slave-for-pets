@@ -3,23 +3,7 @@ import React from "react";
 import Nav from "../components/Nav";
 import Card from "../components/RecordList/Card";
 import Icon from '../components/common/IconList';
-
-const list = [
-  {
-    id: 1,
-    iconName: 'pills',
-    name: '內驅',
-    time: '2022-06-28',
-    note: '我是備註'
-  },
-  {
-    id: 2,
-    iconName: 'bath',
-    name: '洗澡',
-    time: '2022-06-30',
-    note: ''
-  }
-]
+import axios from "../axios";
 
 class RecordList extends React.Component {
   constructor(props) {
@@ -30,14 +14,14 @@ class RecordList extends React.Component {
     this.handleFilter = this.handleFilter.bind(this)
     this.handleAdd = this.handleAdd.bind(this)
     this.putListAmend = this.putListAmend.bind(this)
-    this.postListGet = this.postListGet.bind(this)
+    this.getList = this.getList.bind(this)
     this.deleteListDelete = this.deleteListDelete.bind(this)
     this.cardSave = this.cardSave.bind(this)
     this.cardDelete = this.cardDelete.bind(this)
   }
   
   componentDidMount() {
-    this.postListGet()
+    this.getList()
   }
 
   handleFilter() {
@@ -48,11 +32,19 @@ class RecordList extends React.Component {
     console.log('add')
   }
 
-  postListGet() {  // post api to get record list
-    // TODO async
-    const newList = list
+  getList() {
+    const url = window.location.pathname
+
+    axios({
+      url,
+      method: 'get',
+    })
+      .then(response => {
     this.setState({
-      list: newList,
+          list: response.data,
+        })
+      }).catch(error => {
+        console.log(error)
     })
   }
 
